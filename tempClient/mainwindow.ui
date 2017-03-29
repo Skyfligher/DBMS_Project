@@ -6,21 +6,9 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>204</width>
-    <height>109</height>
+    <width>224</width>
+    <height>121</height>
    </rect>
-  </property>
-  <property name="minimumSize">
-   <size>
-    <width>204</width>
-    <height>109</height>
-   </size>
-  </property>
-  <property name="maximumSize">
-   <size>
-    <width>204</width>
-    <height>109</height>
-   </size>
   </property>
   <property name="palette">
    <palette>
@@ -489,7 +477,7 @@ QLineEdit{
    <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>100</x>
       <y>30</y>
       <width>113</width>
       <height>21</height>
@@ -499,7 +487,7 @@ QLineEdit{
    <widget class="QLineEdit" name="lineEdit_2">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>100</x>
       <y>50</y>
       <width>113</width>
       <height>21</height>
@@ -514,7 +502,7 @@ QLineEdit{
      <rect>
       <x>10</x>
       <y>30</y>
-      <width>61</width>
+      <width>91</width>
       <height>20</height>
      </rect>
     </property>
@@ -545,20 +533,20 @@ QLineEdit{
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>10</y>
-      <width>101</width>
-      <height>16</height>
+      <y>0</y>
+      <width>141</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
      <string>Server Information</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="testButton">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>80</y>
+      <y>90</y>
       <width>80</width>
       <height>21</height>
      </rect>
@@ -567,11 +555,11 @@ QLineEdit{
      <string>Test</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="connectButton">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>80</y>
+      <x>130</x>
+      <y>90</y>
       <width>80</width>
       <height>21</height>
      </rect>
@@ -585,9 +573,9 @@ QLineEdit{
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
   <tabstop>lineEdit</tabstop>
-  <tabstop>pushButton</tabstop>
+  <tabstop>testButton</tabstop>
   <tabstop>lineEdit_2</tabstop>
-  <tabstop>pushButton_2</tabstop>
+  <tabstop>connectButton</tabstop>
  </tabstops>
  <resources/>
  <connections/>

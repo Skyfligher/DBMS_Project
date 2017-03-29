@@ -6,17 +6,20 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QDate>
+#include <connectionhandle.h>
 
 
 QTextStream cout(stdout);
 QTextStream cin(stdin);
 QSqlDatabase database = QSqlDatabase::addDatabase("QMYSQL");    //adding database QTcpSocket *socket;
-QTcpServer *server;
+//QTcpServer *server;
 int port;
 
 QString data;
 
 QSqlQuery query;
+
+QRegExp parse("[:;:]");
 
 bool logIn(QString userMail, QString password);
 void addUser(QString nickname, QString email, QString firstname, QString lastname, QString password);
@@ -40,7 +43,7 @@ int main(int argc, char *argv[])
     bool dbConnect = database.open();                               //true if connected
     qDebug()<<database.open();
 
-    if(database.open()){                                            //Testing if database is connected
+    if(dbConnect){                                            //Testing if database is connected
         cout << "I'm connected to the database!!" << endl;
         cout.flush();
     }
@@ -51,45 +54,41 @@ int main(int argc, char *argv[])
 
 
 
-    server = new QTcpServer();                                      //Setting up tcp server
-    server ->listen(QHostAddress::Any,port);                        //Set to listen on port
 
-    if(server->isListening()){                                      //Testing if listening on port
-        cout << "I'm Listening!!!" << endl;
+    while(dbConnect){
+
+        connectionHandle connect(port);
+        QByteArray data = connect.handle();
+        QString temp = data;
+        QStringList data2 = temp.split(parse);
+        int command = data2.at(0).toInt();
+        cout<<command<<endl;
         cout.flush();
+
+    switch (command) {
+    case 1:
+        //client connected reply sent to client in function
+        break;
+    case 2:
+
+        break;
+    default:
+        break;
     }
-    else{
-        cout << "I can't hear anything!!!" << endl;
-        cout.flush();
-    }
-
-
-
-    do{
-        while(server->hasPendingConnections()){
-            QTcpSocket *socket = server -> nextPendingConnection();
-            QByteArray temp = socket->readAll();
-            QString data = temp.data();
-
-        }
-    }
-    while(!server->hasPendingConnections());
-
-
-
-
-
-    cout << "give me a name" << endl;
-    cout.flush();                                                   //Just testing if function works
-    QString temp;                                                   //This will be replaced by a function to recieve
-    temp = cin.readLine();                                          //incoming connections
-    addUser("temp", temp, "temp", "temp", "temp");
-
-
-
+}
 
     return a.exec();
 }
+
+
+
+
+
+
+
+
+
+
 
 bool logIn(QString userMail, QString password)
 {

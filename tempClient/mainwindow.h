@@ -6,6 +6,7 @@
 
 namespace Ui {
 class MainWindow;
+
 }
 
 class MainWindow : public QMainWindow
@@ -22,6 +23,13 @@ private:
     void mouseMoveEvent(QMouseEvent *event);
     int m_nMouseClick_X_Coordinate;
     int m_nMouseClick_Y_Coordinate;
+
+public slots:
+
+
+private slots:
+    void on_testButton_clicked();
+    void on_connectButton_clicked();
 };
 
 #endif // MAINWINDOW_H
