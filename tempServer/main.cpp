@@ -14,6 +14,7 @@ QTextStream cin(stdin);
 QSqlDatabase database = QSqlDatabase::addDatabase("QMYSQL");    //adding database QTcpSocket *socket;
 //QTcpServer *server;
 int port;
+bool test;
 
 QString data;
 
@@ -21,18 +22,18 @@ QSqlQuery query;
 
 QRegExp parse("[:;:]");
 
-bool logIn(QString userMail, QString password);
+QString login(QString userMail, QString password);
 void addUser(QString nickname, QString email, QString firstname, QString lastname, QString password);
 
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
-    cout << "testing" << endl;
+  /*  cout << "testing" << endl;
     cout.flush();
     port = cin.readLine().toInt();                                  //Where port will go
     cout << port << endl;
     cout.flush();
-
+*/
 
 
     database.setHostName("127.0.0.1");                              //local host
@@ -53,28 +54,52 @@ int main(int argc, char *argv[])
     }
 
 
+        test = false;
+        connectionHandle connect(1000);
+    while(connect.server->isListening()){
 
-
-    while(dbConnect){
-
-        connectionHandle connect(port);
-        QByteArray data = connect.handle();
-        QString temp = data;
-        QStringList data2 = temp.split(parse);
+        //connect.handle();
+        QString userId;
+        if(connect.server->waitForNewConnection(1000)){
+        QString data = connect.handle();
+        //QString temp = data;
+        QStringList data2 = data.split(',');
         int command = data2.at(0).toInt();
+        QString temp4 = data2.at(1);
         cout<<command<<endl;
+        cout<<data<<endl;
+        cout<<temp4;
         cout.flush();
 
     switch (command) {
     case 1:
-        //client connected reply sent to client in function
+        connect.socket->write("1");
+        connect.socket->waitForBytesWritten(10);
+        qDebug() << "confirmation sent!";
+        connect.socket->abort();
+        qDebug() << "socket aborted";
+        test = false;
         break;
     case 2:
+        qDebug()<< data.at(1);
+        userId = login(data2.at(1),data2.at(2));
+        qDebug() << userId;
+        connect.socket->write(userId.toLatin1());
+        connect.socket->waitForBytesWritten(10);
+        qDebug() << "UserID sent!";
+        connect.socket->abort();
+        qDebug() << "socket aborted";
+        test = false;
+        break;
+     case 3:
 
+        connect.socket->write("1");
+        connect.socket->waitForBytesWritten(10);
+        connect.socket->abort();
+        addUser(data2.at(1), data2.at(2), data2.at(3), data2.at(4), data2.at(5));
+        test = false;
         break;
-    default:
-        break;
-    }
+    }}
 }
 
     return a.exec();
@@ -90,23 +115,33 @@ int main(int argc, char *argv[])
 
 
 
-bool logIn(QString userMail, QString password)
+QString login(QString userMail, QString password)
 {
-    query.exec("SELECT password FROM users WHERE email = "+userMail+" OR nickname = "+userMail);
+
+    query.prepare("SELECT users.password FROM main.users WHERE users.email = '"+userMail+"'");
+    query.exec();
     query.next();
     QString tempPass = query.value(0).toString();
+    qDebug()<<query.lastError();
+
+    query.prepare("SELECT users.id FROM main.users WHERE users.email = '"+userMail+"'");
+    query.exec();
+    query.next();
+    QString userId = query.value(0).toString();
+    qDebug()<<query.lastError();
 
     if(tempPass == password){
-        return true;
+        return userId;
     }
     else{
-        return false;
+        QString temp = "";
+        return temp;
     }
 }
 
 void addUser(QString nickname, QString email, QString firstname, QString lastname, QString password)
 {
-    query.exec("SELECT MAX(id) FROM users");
+    query.exec("SELECT MAX(id) FROM main.users");
     query.next();
     int maxuser = query.value(0).toInt();
     maxuser++;

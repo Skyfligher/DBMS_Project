@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2017-03-24T09:02:12
+# Project created by QtCreator 2017-03-29T18:29:45
 #
 #-------------------------------------------------
 
@@ -26,10 +26,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    login.cpp
+    login.cpp \
+    conn.cpp \
+    accountcreate.cpp
 
 HEADERS  += mainwindow.h \
-    login.h
+    login.h \
+    conn.h \
+    accountcreate.h
 
 FORMS    += mainwindow.ui \
-    login.ui
+    login.ui \
+    conn.ui \
+    accountcreate.ui

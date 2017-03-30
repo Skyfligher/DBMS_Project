@@ -1,12 +1,12 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
-#include <QMouseEvent>
+
+#include "accountcreate.h"
+
 
 namespace Ui {
 class MainWindow;
-
 }
 
 class MainWindow : public QMainWindow
@@ -16,6 +16,9 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    QString host;
+    int port;
+    int useId;
 
 private:
     Ui::MainWindow *ui;
@@ -23,13 +26,15 @@ private:
     void mouseMoveEvent(QMouseEvent *event);
     int m_nMouseClick_X_Coordinate;
     int m_nMouseClick_Y_Coordinate;
+    login log;
+    conn con;
+    accountCreate acct;
 
 public slots:
-
-
-private slots:
-    void on_testButton_clicked();
-    void on_connectButton_clicked();
+    void showLog(QString temphost, int tempport);
+    void showMain(int userId);
+    void createAcc();
+    //void accountcreated(QString created);
 };
 
 #endif // MAINWINDOW_H

@@ -13,15 +13,16 @@ class connectionHandle : public QObject
 public:
     explicit connectionHandle(QObject *parent = 0, int port = 1000);
     explicit connectionHandle(int port);
+    QTcpServer *server;
+    QTcpSocket *socket;
 
-    QByteArray handle();
+    QString handle();
 signals:
 
 public slots:
     void sessionOpen();
 private:
-    QTcpServer *server;
-    QTcpSocket *socket;
+
 
 };
 
