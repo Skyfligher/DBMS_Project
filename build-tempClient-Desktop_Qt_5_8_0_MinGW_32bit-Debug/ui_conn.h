@@ -13,11 +13,13 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -26,18 +28,23 @@ class Ui_conn
 {
 public:
     QWidget *centralwidget;
+    QWidget *widget;
+    QVBoxLayout *verticalLayout;
+    QHBoxLayout *horizontalLayout;
     QLabel *label;
-    QPushButton *pushButton;
-    QLabel *label_2;
     QLineEdit *lineEdit;
-    QPushButton *pushButton_2;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *label_2;
     QLineEdit *lineEdit_2;
+    QHBoxLayout *horizontalLayout_3;
+    QPushButton *pushButton;
+    QPushButton *pushButton_2;
 
     void setupUi(QMainWindow *conn)
     {
         if (conn->objectName().isEmpty())
             conn->setObjectName(QStringLiteral("conn"));
-        conn->resize(212, 100);
+        conn->resize(244, 139);
         QPalette palette;
         QBrush brush(QColor(255, 255, 255, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -111,27 +118,60 @@ public:
 "}"));
         centralwidget = new QWidget(conn);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
-        label = new QLabel(centralwidget);
+        widget = new QWidget(centralwidget);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(7, 5, 231, 131));
+        verticalLayout = new QVBoxLayout(widget);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        label = new QLabel(widget);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(10, 10, 71, 16));
         label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(10, 70, 80, 21));
-        label_2 = new QLabel(centralwidget);
+
+        horizontalLayout->addWidget(label);
+
+        lineEdit = new QLineEdit(widget);
+        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+
+        horizontalLayout->addWidget(lineEdit);
+
+
+        verticalLayout->addLayout(horizontalLayout);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        label_2 = new QLabel(widget);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(50, 40, 31, 20));
         label_2->setLayoutDirection(Qt::LeftToRight);
         label_2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-        lineEdit = new QLineEdit(centralwidget);
-        lineEdit->setObjectName(QStringLiteral("lineEdit"));
-        lineEdit->setGeometry(QRect(90, 10, 113, 21));
-        pushButton_2 = new QPushButton(centralwidget);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(120, 70, 80, 21));
-        lineEdit_2 = new QLineEdit(centralwidget);
+
+        horizontalLayout_2->addWidget(label_2);
+
+        lineEdit_2 = new QLineEdit(widget);
         lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
-        lineEdit_2->setGeometry(QRect(90, 40, 113, 21));
+
+        horizontalLayout_2->addWidget(lineEdit_2);
+
+
+        verticalLayout->addLayout(horizontalLayout_2);
+
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+        pushButton = new QPushButton(widget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+
+        horizontalLayout_3->addWidget(pushButton);
+
+        pushButton_2 = new QPushButton(widget);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+
+        horizontalLayout_3->addWidget(pushButton_2);
+
+
+        verticalLayout->addLayout(horizontalLayout_3);
+
         conn->setCentralWidget(centralwidget);
 
         retranslateUi(conn);
@@ -143,8 +183,8 @@ public:
     {
         conn->setWindowTitle(QApplication::translate("conn", "MainWindow", Q_NULLPTR));
         label->setText(QApplication::translate("conn", "Hostname/Ip:", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("conn", "Test", Q_NULLPTR));
         label_2->setText(QApplication::translate("conn", "Port:", Q_NULLPTR));
+        pushButton->setText(QApplication::translate("conn", "Test", Q_NULLPTR));
         pushButton_2->setText(QApplication::translate("conn", "Connect", Q_NULLPTR));
     } // retranslateUi
 
