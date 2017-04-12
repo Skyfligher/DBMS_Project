@@ -46,8 +46,6 @@ void MainWindow::showLog(QString temphost, int tempport){
 void MainWindow::showMain(int userId){
     this->show();
     QString user = QString::number(userId);
-    QString message = "You're Logged in! Your userid is "+user+" there is more to come!";
-    ui->label->setText(message);
 }
 
 void MainWindow::createAcc(){
