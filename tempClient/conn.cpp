@@ -73,3 +73,9 @@ void conn::on_pushButton_2_clicked()
         socket->abort();
     }
 }
+
+void conn::on_pushButton_3_clicked()
+{
+    emit mainClose();
+    this->close();
+}
