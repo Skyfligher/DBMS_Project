@@ -38,6 +38,7 @@ public:
     QHBoxLayout *horizontalLayout_3;
     QPushButton *pushButton;
     QPushButton *pushButton_2;
+    QPushButton *pushButton_3;
 
     void setupUi(QMainWindow *login)
     {
@@ -164,6 +165,11 @@ public:
 
         horizontalLayout_3->addWidget(pushButton_2);
 
+        pushButton_3 = new QPushButton(centralwidget);
+        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+
+        horizontalLayout_3->addWidget(pushButton_3);
+
 
         verticalLayout->addLayout(horizontalLayout_3);
 
@@ -181,6 +187,7 @@ public:
         label_2->setText(QApplication::translate("login", "Password:", Q_NULLPTR));
         pushButton->setText(QApplication::translate("login", "Create Account", Q_NULLPTR));
         pushButton_2->setText(QApplication::translate("login", "Login", Q_NULLPTR));
+        pushButton_3->setText(QApplication::translate("login", "Exit", Q_NULLPTR));
     } // retranslateUi
 
 };

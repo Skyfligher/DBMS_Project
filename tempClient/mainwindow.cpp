@@ -19,13 +19,13 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow::connect(&log, SIGNAL(createAccount()), this, SLOT(createAcc()));
     QMainWindow::connect(&acct, SIGNAL(gotoLog(QString)), &log, SLOT(creatuser(QString)));
     QMainWindow::connect(&acct, SIGNAL(usercreate(QString)), &log, SLOT(creatuser(QString)));
-  //  connect(log, &login::Want2Close, this, &MainWindow::show());
+    QMainWindow::connect(&log, SIGNAL(mainClose()), this, SLOT(mainClosed()));
 }
-
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
 void MainWindow::mousePressEvent(QMouseEvent *event) {
     m_nMouseClick_X_Coordinate = event->x();
     m_nMouseClick_Y_Coordinate = event->y();
@@ -53,4 +53,14 @@ void MainWindow::createAcc(){
     acct.port = port;
     acct.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     acct.show();
+}
+
+void MainWindow::on_Exit_Button_clicked()
+{
+    this->close();
+}
+
+void MainWindow::mainClosed()
+{
+    this->close();
 }

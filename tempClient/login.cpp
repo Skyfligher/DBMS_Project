@@ -63,3 +63,10 @@ void login::creatuser(QString aknowlege){
     }
 }
 
+
+void login::on_pushButton_3_clicked()
+{
+    emit mainClose();
+    this->close();
+
+}

@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[8];
-    char stringdata0[64];
+    QByteArrayData data[10];
+    char stringdata0[98];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -38,11 +38,14 @@ QT_MOC_LITERAL(3, 20, 8), // "temphost"
 QT_MOC_LITERAL(4, 29, 8), // "tempport"
 QT_MOC_LITERAL(5, 38, 8), // "showMain"
 QT_MOC_LITERAL(6, 47, 6), // "userId"
-QT_MOC_LITERAL(7, 54, 9) // "createAcc"
+QT_MOC_LITERAL(7, 54, 9), // "createAcc"
+QT_MOC_LITERAL(8, 64, 10), // "mainClosed"
+QT_MOC_LITERAL(9, 75, 22) // "on_Exit_Button_clicked"
 
     },
     "MainWindow\0showLog\0\0temphost\0tempport\0"
-    "showMain\0userId\0createAcc"
+    "showMain\0userId\0createAcc\0mainClosed\0"
+    "on_Exit_Button_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -52,7 +55,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       5,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -60,13 +63,17 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    2,   29,    2, 0x0a /* Public */,
-       5,    1,   34,    2, 0x0a /* Public */,
-       7,    0,   37,    2, 0x0a /* Public */,
+       1,    2,   39,    2, 0x0a /* Public */,
+       5,    1,   44,    2, 0x0a /* Public */,
+       7,    0,   47,    2, 0x0a /* Public */,
+       8,    0,   48,    2, 0x0a /* Public */,
+       9,    0,   49,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::QString, QMetaType::Int,    3,    4,
     QMetaType::Void, QMetaType::Int,    6,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -81,6 +88,8 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 0: _t->showLog((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         case 1: _t->showMain((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 2: _t->createAcc(); break;
+        case 3: _t->mainClosed(); break;
+        case 4: _t->on_Exit_Button_clicked(); break;
         default: ;
         }
     }
@@ -111,13 +120,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 5;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 5)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 3;
+        _id -= 5;
     }
     return _id;
 }

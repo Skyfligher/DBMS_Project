@@ -238,7 +238,7 @@ release/moc_mainwindow.cpp: ../tempClient/accountcreate.h \
 		../tempClient/mainwindow.h \
 		release/moc_predefs.h \
 		C:/Qt/5.8/mingw53_32/bin/moc.exe
-	C:\Qt\5.8\mingw53_32\bin\moc.exe $(DEFINES) --include release/moc_predefs.h -IC:/Qt/5.8/mingw53_32/mkspecs/win32-g++ -IC:/Users/Jared/Documents/General_Code/DBMS_Project/tempClient -IC:/Qt/5.8/mingw53_32/include -IC:/Qt/5.8/mingw53_32/include/QtWidgets -IC:/Qt/5.8/mingw53_32/include/QtGui -IC:/Qt/5.8/mingw53_32/include/QtANGLE -IC:/Qt/5.8/mingw53_32/include/QtNetwork -IC:/Qt/5.8/mingw53_32/include/QtCore -I. -IC:/Qt/Qt5.8.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Qt5.8.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\tempClient\mainwindow.h -o release\moc_mainwindow.cpp
+	C:\Qt\5.8\mingw53_32\bin\moc.exe $(DEFINES) --include release/moc_predefs.h -IC:/Qt/5.8/mingw53_32/mkspecs/win32-g++ -IC:/Users/Jared/Documents/General_Code/DBMS_Project/tempClient -IC:/Qt/5.8/mingw53_32/include -IC:/Qt/5.8/mingw53_32/include/QtWidgets -IC:/Qt/5.8/mingw53_32/include/QtGui -IC:/Qt/5.8/mingw53_32/include/QtANGLE -IC:/Qt/5.8/mingw53_32/include/QtNetwork -IC:/Qt/5.8/mingw53_32/include/QtCore -I. -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\tempClient\mainwindow.h -o release\moc_mainwindow.cpp
 
 release/moc_login.cpp: ../tempClient/conn.h \
 		C:/Qt/5.8/mingw53_32/include/QtWidgets/QMainWindow \
@@ -357,7 +357,7 @@ release/moc_login.cpp: ../tempClient/conn.h \
 		../tempClient/login.h \
 		release/moc_predefs.h \
 		C:/Qt/5.8/mingw53_32/bin/moc.exe
-	C:\Qt\5.8\mingw53_32\bin\moc.exe $(DEFINES) --include release/moc_predefs.h -IC:/Qt/5.8/mingw53_32/mkspecs/win32-g++ -IC:/Users/Jared/Documents/General_Code/DBMS_Project/tempClient -IC:/Qt/5.8/mingw53_32/include -IC:/Qt/5.8/mingw53_32/include/QtWidgets -IC:/Qt/5.8/mingw53_32/include/QtGui -IC:/Qt/5.8/mingw53_32/include/QtANGLE -IC:/Qt/5.8/mingw53_32/include/QtNetwork -IC:/Qt/5.8/mingw53_32/include/QtCore -I. -IC:/Qt/Qt5.8.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Qt5.8.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\tempClient\login.h -o release\moc_login.cpp
+	C:\Qt\5.8\mingw53_32\bin\moc.exe $(DEFINES) --include release/moc_predefs.h -IC:/Qt/5.8/mingw53_32/mkspecs/win32-g++ -IC:/Users/Jared/Documents/General_Code/DBMS_Project/tempClient -IC:/Qt/5.8/mingw53_32/include -IC:/Qt/5.8/mingw53_32/include/QtWidgets -IC:/Qt/5.8/mingw53_32/include/QtGui -IC:/Qt/5.8/mingw53_32/include/QtANGLE -IC:/Qt/5.8/mingw53_32/include/QtNetwork -IC:/Qt/5.8/mingw53_32/include/QtCore -I. -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\tempClient\login.h -o release\moc_login.cpp
 
 release/moc_conn.cpp: C:/Qt/5.8/mingw53_32/include/QtWidgets/QMainWindow \
 		C:/Qt/5.8/mingw53_32/include/QtWidgets/qmainwindow.h \
@@ -475,7 +475,7 @@ release/moc_conn.cpp: C:/Qt/5.8/mingw53_32/include/QtWidgets/QMainWindow \
 		../tempClient/conn.h \
 		release/moc_predefs.h \
 		C:/Qt/5.8/mingw53_32/bin/moc.exe
-	C:\Qt\5.8\mingw53_32\bin\moc.exe $(DEFINES) --include release/moc_predefs.h -IC:/Qt/5.8/mingw53_32/mkspecs/win32-g++ -IC:/Users/Jared/Documents/General_Code/DBMS_Project/tempClient -IC:/Qt/5.8/mingw53_32/include -IC:/Qt/5.8/mingw53_32/include/QtWidgets -IC:/Qt/5.8/mingw53_32/include/QtGui -IC:/Qt/5.8/mingw53_32/include/QtANGLE -IC:/Qt/5.8/mingw53_32/include/QtNetwork -IC:/Qt/5.8/mingw53_32/include/QtCore -I. -IC:/Qt/Qt5.8.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Qt5.8.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\tempClient\conn.h -o release\moc_conn.cpp
+	C:\Qt\5.8\mingw53_32\bin\moc.exe $(DEFINES) --include release/moc_predefs.h -IC:/Qt/5.8/mingw53_32/mkspecs/win32-g++ -IC:/Users/Jared/Documents/General_Code/DBMS_Project/tempClient -IC:/Qt/5.8/mingw53_32/include -IC:/Qt/5.8/mingw53_32/include/QtWidgets -IC:/Qt/5.8/mingw53_32/include/QtGui -IC:/Qt/5.8/mingw53_32/include/QtANGLE -IC:/Qt/5.8/mingw53_32/include/QtNetwork -IC:/Qt/5.8/mingw53_32/include/QtCore -I. -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\tempClient\conn.h -o release\moc_conn.cpp
 
 release/moc_accountcreate.cpp: ../tempClient/login.h \
 		../tempClient/conn.h \
@@ -595,7 +595,7 @@ release/moc_accountcreate.cpp: ../tempClient/login.h \
 		../tempClient/accountcreate.h \
 		release/moc_predefs.h \
 		C:/Qt/5.8/mingw53_32/bin/moc.exe
-	C:\Qt\5.8\mingw53_32\bin\moc.exe $(DEFINES) --include release/moc_predefs.h -IC:/Qt/5.8/mingw53_32/mkspecs/win32-g++ -IC:/Users/Jared/Documents/General_Code/DBMS_Project/tempClient -IC:/Qt/5.8/mingw53_32/include -IC:/Qt/5.8/mingw53_32/include/QtWidgets -IC:/Qt/5.8/mingw53_32/include/QtGui -IC:/Qt/5.8/mingw53_32/include/QtANGLE -IC:/Qt/5.8/mingw53_32/include/QtNetwork -IC:/Qt/5.8/mingw53_32/include/QtCore -I. -IC:/Qt/Qt5.8.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Qt5.8.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\tempClient\accountcreate.h -o release\moc_accountcreate.cpp
+	C:\Qt\5.8\mingw53_32\bin\moc.exe $(DEFINES) --include release/moc_predefs.h -IC:/Qt/5.8/mingw53_32/mkspecs/win32-g++ -IC:/Users/Jared/Documents/General_Code/DBMS_Project/tempClient -IC:/Qt/5.8/mingw53_32/include -IC:/Qt/5.8/mingw53_32/include/QtWidgets -IC:/Qt/5.8/mingw53_32/include/QtGui -IC:/Qt/5.8/mingw53_32/include/QtANGLE -IC:/Qt/5.8/mingw53_32/include/QtNetwork -IC:/Qt/5.8/mingw53_32/include/QtCore -I. -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\tempClient\accountcreate.h -o release\moc_accountcreate.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -873,47 +873,7 @@ release/mainwindow.o: ../tempClient/mainwindow.cpp ../tempClient/mainwindow.h \
 		C:/Qt/5.8/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
 		C:/Qt/5.8/mingw53_32/include/QtNetwork/qtnetwork-config.h \
 		C:/Qt/5.8/mingw53_32/include/QtNetwork/qabstractsocket.h \
-		ui_mainwindow.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/QVariant \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QAction \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qaction.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qactiongroup.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QApplication \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qapplication.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/qeventloop.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/5.8/mingw53_32/include/QtGui/qguiapplication.h \
-		C:/Qt/5.8/mingw53_32/include/QtGui/qinputmethod.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QButtonGroup \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QHeaderView \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qframe.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
-		C:/Qt/5.8/mingw53_32/include/QtGui/qvalidator.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/qregularexpression.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qslider.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qstyle.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QLabel \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qlabel.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QMenuBar \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qmenubar.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qmenu.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QStatusBar \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qstatusbar.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QToolBar \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qtoolbar.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QWidget
+		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\tempClient\mainwindow.cpp
 
 release/login.o: ../tempClient/login.cpp ../tempClient/login.h \
@@ -1031,49 +991,7 @@ release/login.o: ../tempClient/login.cpp ../tempClient/login.h \
 		C:/Qt/5.8/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
 		C:/Qt/5.8/mingw53_32/include/QtNetwork/qtnetwork-config.h \
 		C:/Qt/5.8/mingw53_32/include/QtNetwork/qabstractsocket.h \
-		ui_login.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/QVariant \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QAction \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qaction.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qactiongroup.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QApplication \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qapplication.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/qeventloop.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/5.8/mingw53_32/include/QtGui/qguiapplication.h \
-		C:/Qt/5.8/mingw53_32/include/QtGui/qinputmethod.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QButtonGroup \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QHeaderView \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qframe.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
-		C:/Qt/5.8/mingw53_32/include/QtGui/qvalidator.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/qregularexpression.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qslider.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qstyle.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QLabel \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qlabel.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QLineEdit \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qlineedit.h \
-		C:/Qt/5.8/mingw53_32/include/QtGui/qtextcursor.h \
-		C:/Qt/5.8/mingw53_32/include/QtGui/qtextformat.h \
-		C:/Qt/5.8/mingw53_32/include/QtGui/qpen.h \
-		C:/Qt/5.8/mingw53_32/include/QtGui/qtextoption.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QPushButton \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QWidget
+		ui_login.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\login.o ..\tempClient\login.cpp
 
 release/conn.o: ../tempClient/conn.cpp ../tempClient/conn.h \
@@ -1190,49 +1108,7 @@ release/conn.o: ../tempClient/conn.cpp ../tempClient/conn.h \
 		C:/Qt/5.8/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
 		C:/Qt/5.8/mingw53_32/include/QtNetwork/qtnetwork-config.h \
 		C:/Qt/5.8/mingw53_32/include/QtNetwork/qabstractsocket.h \
-		ui_conn.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/QVariant \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QAction \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qaction.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qactiongroup.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QApplication \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qapplication.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/qeventloop.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/5.8/mingw53_32/include/QtGui/qguiapplication.h \
-		C:/Qt/5.8/mingw53_32/include/QtGui/qinputmethod.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QButtonGroup \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QHeaderView \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qframe.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
-		C:/Qt/5.8/mingw53_32/include/QtGui/qvalidator.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/qregularexpression.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qslider.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qstyle.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QLabel \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qlabel.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QLineEdit \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qlineedit.h \
-		C:/Qt/5.8/mingw53_32/include/QtGui/qtextcursor.h \
-		C:/Qt/5.8/mingw53_32/include/QtGui/qtextformat.h \
-		C:/Qt/5.8/mingw53_32/include/QtGui/qpen.h \
-		C:/Qt/5.8/mingw53_32/include/QtGui/qtextoption.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QPushButton \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QWidget
+		ui_conn.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\conn.o ..\tempClient\conn.cpp
 
 release/accountcreate.o: ../tempClient/accountcreate.cpp ../tempClient/accountcreate.h \
@@ -1351,49 +1227,7 @@ release/accountcreate.o: ../tempClient/accountcreate.cpp ../tempClient/accountcr
 		C:/Qt/5.8/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
 		C:/Qt/5.8/mingw53_32/include/QtNetwork/qtnetwork-config.h \
 		C:/Qt/5.8/mingw53_32/include/QtNetwork/qabstractsocket.h \
-		ui_accountcreate.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/QVariant \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QAction \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qaction.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qactiongroup.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QApplication \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qapplication.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/qeventloop.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/5.8/mingw53_32/include/QtGui/qguiapplication.h \
-		C:/Qt/5.8/mingw53_32/include/QtGui/qinputmethod.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QButtonGroup \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QHeaderView \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qframe.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
-		C:/Qt/5.8/mingw53_32/include/QtGui/qvalidator.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/qregularexpression.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qslider.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qstyle.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QLabel \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qlabel.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QLineEdit \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qlineedit.h \
-		C:/Qt/5.8/mingw53_32/include/QtGui/qtextcursor.h \
-		C:/Qt/5.8/mingw53_32/include/QtGui/qtextformat.h \
-		C:/Qt/5.8/mingw53_32/include/QtGui/qpen.h \
-		C:/Qt/5.8/mingw53_32/include/QtGui/qtextoption.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QPushButton \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/5.8/mingw53_32/include/QtWidgets/QWidget
+		ui_accountcreate.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\accountcreate.o ..\tempClient\accountcreate.cpp
 
 release/moc_mainwindow.o: release/moc_mainwindow.cpp 

@@ -23,6 +23,8 @@ private slots:
     void creatuser(QString aknowlege);
 
 
+    void on_pushButton_3_clicked();
+
 private:
     Ui::login *ui;
     void mousePressEvent(QMouseEvent *event);
@@ -34,6 +36,7 @@ private:
 signals:
     void Want2CloseLog(int useId);
     void createAccount();
+    void mainClose();
 };
 
 #endif // LOGIN_H

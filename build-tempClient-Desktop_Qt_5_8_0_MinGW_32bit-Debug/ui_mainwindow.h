@@ -13,7 +13,9 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
@@ -29,13 +31,17 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
+    QWidget *layoutWidget;
+    QVBoxLayout *verticalLayout_2;
+    QLabel *label;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
     QPushButton *pushButton;
+    QWidget *layoutWidget1;
+    QGridLayout *gridLayout;
+    QPushButton *Disconnect_Button;
     QPushButton *Exit_Button;
     QPushButton *UserSrch_Button;
-    QPushButton *Disconnect_Button;
-    QWidget *widget;
     QVBoxLayout *verticalLayout;
     QTextBrowser *textBrowser;
     QLineEdit *lineEdit;
@@ -119,43 +125,74 @@ public:
 "}"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        scrollArea = new QScrollArea(centralWidget);
+        layoutWidget = new QWidget(centralWidget);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(11, 11, 121, 311));
+        verticalLayout_2 = new QVBoxLayout(layoutWidget);
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        label = new QLabel(layoutWidget);
+        label->setObjectName(QStringLiteral("label"));
+        QFont font;
+        font.setPointSize(16);
+        label->setFont(font);
+        label->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_2->addWidget(label);
+
+        scrollArea = new QScrollArea(layoutWidget);
         scrollArea->setObjectName(QStringLiteral("scrollArea"));
-        scrollArea->setGeometry(QRect(10, 40, 121, 281));
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 119, 279));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 117, 283));
         pushButton = new QPushButton(scrollAreaWidgetContents);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(10, 10, 91, 16));
         scrollArea->setWidget(scrollAreaWidgetContents);
-        Exit_Button = new QPushButton(centralWidget);
-        Exit_Button->setObjectName(QStringLiteral("Exit_Button"));
-        Exit_Button->setGeometry(QRect(400, 10, 80, 16));
-        UserSrch_Button = new QPushButton(centralWidget);
-        UserSrch_Button->setObjectName(QStringLiteral("UserSrch_Button"));
-        UserSrch_Button->setGeometry(QRect(310, 10, 80, 16));
-        Disconnect_Button = new QPushButton(centralWidget);
+
+        verticalLayout_2->addWidget(scrollArea);
+
+        layoutWidget1 = new QWidget(centralWidget);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(139, 11, 341, 311));
+        gridLayout = new QGridLayout(layoutWidget1);
+        gridLayout->setSpacing(6);
+        gridLayout->setContentsMargins(11, 11, 11, 11);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        gridLayout->setContentsMargins(0, 0, 0, 0);
+        Disconnect_Button = new QPushButton(layoutWidget1);
         Disconnect_Button->setObjectName(QStringLiteral("Disconnect_Button"));
-        Disconnect_Button->setGeometry(QRect(10, 10, 80, 16));
-        widget = new QWidget(centralWidget);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(140, 40, 341, 281));
-        verticalLayout = new QVBoxLayout(widget);
+
+        gridLayout->addWidget(Disconnect_Button, 0, 0, 1, 1);
+
+        Exit_Button = new QPushButton(layoutWidget1);
+        Exit_Button->setObjectName(QStringLiteral("Exit_Button"));
+
+        gridLayout->addWidget(Exit_Button, 0, 2, 1, 1);
+
+        UserSrch_Button = new QPushButton(layoutWidget1);
+        UserSrch_Button->setObjectName(QStringLiteral("UserSrch_Button"));
+
+        gridLayout->addWidget(UserSrch_Button, 0, 1, 1, 1);
+
+        verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
-        verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        textBrowser = new QTextBrowser(widget);
+        textBrowser = new QTextBrowser(layoutWidget1);
         textBrowser->setObjectName(QStringLiteral("textBrowser"));
 
         verticalLayout->addWidget(textBrowser);
 
-        lineEdit = new QLineEdit(widget);
+        lineEdit = new QLineEdit(layoutWidget1);
         lineEdit->setObjectName(QStringLiteral("lineEdit"));
 
         verticalLayout->addWidget(lineEdit);
+
+
+        gridLayout->addLayout(verticalLayout, 1, 0, 1, 3);
 
         MainWindow->setCentralWidget(centralWidget);
         statusBar = new QStatusBar(MainWindow);
@@ -170,10 +207,11 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
+        label->setText(QApplication::translate("MainWindow", "Channels", Q_NULLPTR));
         pushButton->setText(QApplication::translate("MainWindow", "PushButton", Q_NULLPTR));
+        Disconnect_Button->setText(QApplication::translate("MainWindow", "Search User", Q_NULLPTR));
         Exit_Button->setText(QApplication::translate("MainWindow", "Exit", Q_NULLPTR));
         UserSrch_Button->setText(QApplication::translate("MainWindow", "Disconnect", Q_NULLPTR));
-        Disconnect_Button->setText(QApplication::translate("MainWindow", "Search User", Q_NULLPTR));
         textBrowser->setHtml(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

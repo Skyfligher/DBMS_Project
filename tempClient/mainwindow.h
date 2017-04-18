@@ -34,7 +34,10 @@ public slots:
     void showLog(QString temphost, int tempport);
     void showMain(int userId);
     void createAcc();
-    //void accountcreated(QString created);
+    void mainClosed();
+
+private slots:
+    void on_Exit_Button_clicked();
 };
 
 #endif // MAINWINDOW_H
