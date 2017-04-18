@@ -34,7 +34,7 @@ void conn::on_pushButton_clicked()
             socket->waitForBytesWritten(1000);
             socket->waitForReadyRead(1000);
             if(socket->readAll() == "1"){
-                emit Want2Close("127.0.0.1", 1000);
+                emit closeConn("127.0.0.1", 1000);
                 this->close();
             }
 
@@ -61,7 +61,7 @@ void conn::on_pushButton_2_clicked()
                 socket->waitForBytesWritten(10);
                 socket->waitForReadyRead(1000);
                 if(socket->readAll() == "1"){
-                    emit Want2Close(host,port);
+                    emit closeConn(host,port);
                     this->close();
                 }
             }

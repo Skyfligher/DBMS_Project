@@ -34,7 +34,7 @@ private:
     QTcpSocket *socket;
 
 signals:
-    void Want2Close(QString host, int port);
+    void closeConn(QString host, int port);
     void mainClose();
 };
 

@@ -43,7 +43,7 @@ void login::on_pushButton_2_clicked()
             socket->waitForBytesWritten(10);
             socket->waitForReadyRead(1500);
             QString userID = socket->readAll();
-            emit Want2CloseLog(userID.toInt());
+            emit closeLog(userID.toInt());
             socket->abort();
             this->close();
 

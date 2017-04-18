@@ -34,7 +34,7 @@ private:
     QTcpSocket *socket;
 
 signals:
-    void Want2CloseLog(int useId);
+    void closeLog(int useId);
     void createAccount();
     void mainClose();
 };

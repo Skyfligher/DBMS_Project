@@ -14,8 +14,8 @@ MainWindow::MainWindow(QWidget *parent) :
     con.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     con.show();
 
-    QMainWindow::connect(&con, SIGNAL(Want2Close(QString, int)), this, SLOT(showLog(QString, int)));
-    QMainWindow::connect(&log, SIGNAL(Want2CloseLog(int)), this, SLOT(showMain(int)));
+    QMainWindow::connect(&con, SIGNAL(closeConn(QString, int)), this, SLOT(showLog(QString, int)));
+    QMainWindow::connect(&log, SIGNAL(closeLog(int)), this, SLOT(showMain(int)));
     QMainWindow::connect(&log, SIGNAL(createAccount()), this, SLOT(createAcc()));
     QMainWindow::connect(&acct, SIGNAL(gotoLog(QString)), &log, SLOT(creatuser(QString)));
     QMainWindow::connect(&acct, SIGNAL(usercreate(QString)), &log, SLOT(creatuser(QString)));
