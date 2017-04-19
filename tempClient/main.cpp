@@ -8,12 +8,9 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    MainWindow w;
-    w.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-    //w.show();
+    MainWindow w;   //Creating the mainwindow
+    w.setWindowFlags(Qt::Window | Qt::FramelessWindowHint); //Sets mainwindow to frameless mode, asthetics
 
-    //login log;
-    //log.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
 
-    return a.exec();
+    return a.exec(); //exits main loop as the mainwindow is now setup
 }
