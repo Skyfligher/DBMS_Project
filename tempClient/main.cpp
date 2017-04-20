@@ -1,6 +1,6 @@
-#include "conn.h"
-#include "login.h"
-#include "mainwindow.h"
+
+#include <mainwindow.h>
+
 #include <QApplication>
 
 

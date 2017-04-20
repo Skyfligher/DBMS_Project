@@ -1,5 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QMainWindow>
+#include <QMouseEvent>
+#include <QMessageBox>
+#include <QTcpSocket>
 
 /* Things to do
  * Change parser to something other than a comma no :or;

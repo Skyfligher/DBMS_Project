@@ -7,20 +7,20 @@
 #include <QTcpSocket>
 
 
-class connectionHandle : public QObject
+class connectionHandle : public QObject         //Setting class name
 {
     Q_OBJECT
 public:
-    explicit connectionHandle(QObject *parent = 0, int port = 1000);
-    explicit connectionHandle(int port);
-    QTcpServer *server;
-    QTcpSocket *socket;
+    explicit connectionHandle(QObject *parent = 0, int port = 1000);    //Default constructor
+    explicit connectionHandle(int port);                                //Constructor allows manual pick of port number
+    QTcpServer *server;         //Server object pointer
+    QTcpSocket *socket;         //Socket object pointer
 
-    QString handle();
+    QStringList handle();       //Function checks if there is a pending connection and retrieves data parsing into a QStringList
 signals:
 
 public slots:
-    void sessionOpen();
+
 private:
 
 
