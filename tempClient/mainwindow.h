@@ -5,6 +5,7 @@
 #include <conn.h>
 #include <login.h>
 #include <accountcreate.h>
+#include <channelcreate.h>
 
 
 namespace Ui {
@@ -31,6 +32,9 @@ private:
     login log;                                          //Creating instance of login window
     conn con;                                           //Creating instance of connection window
     accountCreate acct;                                 //Creating instance of account creation window
+    channelcreate newchan;                              //Creating instance of new channel window
+    QTcpSocket *socket;
+    QStringList chat;
 
 public slots:
     void showLog(QString temphost, int tempport);       //Slot to be activated when you connect to the server, takes the host address and the port number from the login window
@@ -40,6 +44,7 @@ public slots:
 
 private slots:
     void on_Exit_Button_clicked();                      //Private slot that ends the program when the exit button is clicked, takes signal given off from button click
+    void on_pushButton_clicked();
 };
 
 #endif // MAINWINDOW_H

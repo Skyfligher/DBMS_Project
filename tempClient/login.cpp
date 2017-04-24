@@ -35,9 +35,11 @@ void login::on_pushButton_2_clicked()   //Takes the given email and password and
 {
     if(ui->lineEdit->text() != "" && ui->lineEdit_2->text() != "")  //Makes sure there is information in the textboxes
     {
-        QString email = ui->lineEdit->text();           //Takes the text from the email text box, lineEdit
-        QString password = ui->lineEdit_2->text();      //Takes the text from the password text box, lineEdit_2
-        QString temp = "2,"+email+","+password;         //Builds string to send to server uses 2 to indicate what operation the server should run, check user login info
+        QString temp = "2,"+ui->lineEdit->text()+","+ui->lineEdit_2->text();
+                                                        //Builds string to send to server uses 2 to indicate what operation the server should run, check user login info
+                                                        //Takes the text from the email text box, lineEdit
+                                                        //Takes the text from the password text box, lineEdit_2
+
         QByteArray send = temp.toUtf8();                //Takes the qstring and converts it to a bytearray that can be sent through the socket
         socket = new QTcpSocket();                      //Creates new socket
         socket->connectToHost(host,port);               //Connects to the server using the credentials given by the connection screen

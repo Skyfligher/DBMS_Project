@@ -64,6 +64,9 @@ int main(int argc, char *argv[])
                     userId = login(data.at(1),data.at(2));      //Passes email and password to the login function, login function passes back user id or issues that are taken care of by the client
                     connect.socket->write(userId.toUtf8());     //Writing data to the socket .toUtf8 changes QString to byte array
                     connect.socket->waitForBytesWritten(10);    //Waiting for data to be written
+
+                    ////////////////add function to get and send the chat messages
+
                     connect.socket->abort();                    //Closing the socket
                     break;
                 }
@@ -76,7 +79,6 @@ int main(int argc, char *argv[])
                     connect.socket->abort();                                //Closing the socket
                     break;
                 }
-
                 }
 
             }

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>494</width>
-    <height>349</height>
+    <width>658</width>
+    <height>453</height>
    </rect>
   </property>
   <property name="palette">
@@ -444,8 +444,8 @@ QLineEdit{
      <rect>
       <x>11</x>
       <y>11</y>
-      <width>121</width>
-      <height>311</height>
+      <width>151</width>
+      <height>421</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -474,23 +474,10 @@ QLineEdit{
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>117</width>
-          <height>283</height>
+          <width>147</width>
+          <height>393</height>
          </rect>
         </property>
-        <widget class="QPushButton" name="pushButton">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>0</y>
-           <width>91</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>PushButton</string>
-         </property>
-        </widget>
        </widget>
       </widget>
      </item>
@@ -499,10 +486,10 @@ QLineEdit{
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>139</x>
+      <x>169</x>
       <y>11</y>
-      <width>341</width>
-      <height>311</height>
+      <width>481</width>
+      <height>421</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
@@ -530,7 +517,7 @@ QLineEdit{
      <item row="1" column="0" colspan="3">
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QListWidget" name="listWidget"/>
+        <widget class="QTextBrowser" name="textBrowser"/>
        </item>
        <item>
         <widget class="QLineEdit" name="lineEdit"/>

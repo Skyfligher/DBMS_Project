@@ -8,7 +8,6 @@
 /* Things to do
  * Change parser to something other than a comma no :or;
  * Add the Channels and Channel Id tables
- *      channel(idchannel, discription, name)
  *      channelid(time, message, sender) the ID in channelid should be the channels given id (channel1,channel35,exd
  * Function to create linked list of messages, it should create new items in the List Widget(need to learn how to add them)
  * Function to get data from the server and put it into the linked list (need ability to apend to the top of the list and add to list widget)
@@ -65,16 +64,64 @@ void MainWindow::showMain(int userId)   //Takes info from signal(logged in) and 
 {
     this->show();
     QString user = QString::number(userId); //Sets user id string
+
+    socket = new QTcpSocket();
+    socket->connectToHost(host,port);
+    if(socket->waitForConnected(1500))
+    {
+        if(socket->state() == QAbstractSocket::ConnectedState)
+        {
+            if(socket->waitForReadyRead(1500))
+            {
+                QString data;
+                data.resize(socket->readBufferSize());
+                data = socket->readAll();
+                QStringList dataList = data.split(',');
+                int command = dataList.at(0).toInt;
+
+                switch(command)
+                {
+                case 1:              //Ping, checking for connection
+                {
+                    connect.socket->write("1");                 //Sending acknowledgment
+                    connect.socket->waitForBytesWritten(10);    //Waiting for data to be written
+                    connect.socket->abort();                    //Closing the socket
+                    break;
+                }
+                case 2:             //Initial chat retreaval
+                {
+                    ui->textBrowser->setText("");
+                    for(int t = 1; t != dataList.length(); t++)
+                    {
+                    chat<<dataList.at(t);
+                    ui->textBrowser->append("\n"+dataList.at(t));
+                    }
+                    break;
+                }
+                case 3:
+                {
+                    chat<<dataList.at(2);
+                    ui->textBrowser->append("\n"+dataList.at(2));
+                    break;
+                }
+                }
+            }
+        }
+    }
+
+
+
+
 }
 
-void MainWindow::createAcc()    //Triggered by signal(create account button) and sets the windows host info and then shows the window
+/*void MainWindow::createAcc()    //Triggered by signal(create account button) and sets the windows host info and then shows the window
 {
     acct.host = host;
     acct.port = port;
     acct.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);  //Sets the window to frameless mode, asthetics
     acct.show();
 }
-
+*/
 void MainWindow::on_Exit_Button_clicked()   //Exits the program closes this window on exit button press
 {
     this->close();
@@ -84,3 +131,5 @@ void MainWindow::mainClosed()   //Exits the program when triggered by signal(mai
 {
     this->close();
 }
+
+
