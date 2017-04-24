@@ -28,17 +28,17 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     login.cpp \
     conn.cpp \
-    accountcreate.cpp \
-    channelcreate.cpp
+    channelcreate.cpp \
+    accountcreate.cpp
 
 HEADERS  += mainwindow.h \
     login.h \
     conn.h \
-    accountcreate.h \
-    channelcreate.h
+    channelcreate.h \
+    accountcreate.h
 
 FORMS    += mainwindow.ui \
     login.ui \
     conn.ui \
-    accountcreate.ui \
-    channelcreate.ui
+    channelcreate.ui \
+    accountcreate.ui

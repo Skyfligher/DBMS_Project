@@ -4,6 +4,7 @@
 #include <QMouseEvent>
 #include <QMessageBox>
 #include <QTcpSocket>
+#include <QThread>
 
 
 login::login(QWidget *parent) :
@@ -55,6 +56,11 @@ void login::on_pushButton_2_clicked()   //Takes the given email and password and
 
                 if(userID != "failedPass" && userID != "failedEmail" && userID != "databaseError")   //Tests for failed Email, Password, or database error
                 {
+                    socket->write("1");
+                    socket->waitForBytesWritten(1000);
+                    socket->abort();                    //Deletes the socket
+
+                    //QThread::sleep(2);
                     emit closeLog(userID.toInt());      //Opens the mainwindow sending the userID to it
                     this->close();                      //Closes the login window, ending the window
                 }

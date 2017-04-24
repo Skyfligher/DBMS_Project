@@ -44,7 +44,7 @@ public slots:
 
 private slots:
     void on_Exit_Button_clicked();                      //Private slot that ends the program when the exit button is clicked, takes signal given off from button click
-    void on_pushButton_clicked();
+    //void on_pushButton_clicked();
 };
 
 #endif // MAINWINDOW_H

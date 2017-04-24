@@ -64,64 +64,49 @@ void MainWindow::showMain(int userId)   //Takes info from signal(logged in) and 
 {
     this->show();
     QString user = QString::number(userId); //Sets user id string
-
     socket = new QTcpSocket();
     socket->connectToHost(host,port);
     if(socket->waitForConnected(1500))
     {
-        if(socket->state() == QAbstractSocket::ConnectedState)
-        {
-            if(socket->waitForReadyRead(1500))
-            {
-                QString data;
-                data.resize(socket->readBufferSize());
-                data = socket->readAll();
-                QStringList dataList = data.split(',');
-                int command = dataList.at(0).toInt;
+        socket->write("4,");
+        socket->waitForBytesWritten(100);
 
-                switch(command)
-                {
-                case 1:              //Ping, checking for connection
-                {
-                    connect.socket->write("1");                 //Sending acknowledgment
-                    connect.socket->waitForBytesWritten(10);    //Waiting for data to be written
-                    connect.socket->abort();                    //Closing the socket
-                    break;
-                }
-                case 2:             //Initial chat retreaval
-                {
-                    ui->textBrowser->setText("");
-                    for(int t = 1; t != dataList.length(); t++)
-                    {
-                    chat<<dataList.at(t);
-                    ui->textBrowser->append("\n"+dataList.at(t));
-                    }
-                    break;
-                }
-                case 3:
-                {
-                    chat<<dataList.at(2);
-                    ui->textBrowser->append("\n"+dataList.at(2));
-                    break;
-                }
-                }
+        if(socket->waitForReadyRead(1500))
+        {
+            QStringList dataList = socket->readAll().split(',');
+            for(int t = 0; t < dataList.size(); t++)
+            {
+                chat<<dataList.at(t);
+                ui->textBrowser->append("\n"+dataList.at(t));
             }
         }
     }
-
-
-
-
+    else
+    {
+        QMessageBox::information(this,"Error","Cannot connect to the server.");
+    }
+    while(socket->state() == QAbstractSocket::ConnectedState)
+    {
+        if(socket->waitForReadyRead(1500))
+        {
+            QStringList data = socket->readAll().split(',');
+            for(int t = 0; t < data.size(); t++)
+            {
+                chat<<data.at(t);
+                ui->textBrowser->append("\n"+data.at(t));
+            }
+        }
+    }
 }
 
-/*void MainWindow::createAcc()    //Triggered by signal(create account button) and sets the windows host info and then shows the window
+void MainWindow::createAcc()    //Triggered by signal(create account button) and sets the windows host info and then shows the window
 {
     acct.host = host;
     acct.port = port;
     acct.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);  //Sets the window to frameless mode, asthetics
     acct.show();
 }
-*/
+
 void MainWindow::on_Exit_Button_clicked()   //Exits the program closes this window on exit button press
 {
     this->close();

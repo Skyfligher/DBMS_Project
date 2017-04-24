@@ -39,8 +39,8 @@ void channelcreate::on_pushButton_clicked()             //Sends info to create w
     QString temp = "4,"+ui->lineEdit->text()+","+ui->textEdit->toPlainText();
                                                        //Builds string to send, taking the name and the discription from the textboxes
     QByteArray send = temp.toUtf8();                    //Converting to a Utf8 byte array for tcp sending
-    socket = new QTcpSocket();
-    socket->connect(host,port);
+    //socket = new QTcpSocket();
+    //socket->connect(host,port);
 
 
 
