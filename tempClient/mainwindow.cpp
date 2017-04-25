@@ -83,15 +83,19 @@ void MainWindow::showMain(int userIdtemp)   //Takes info from signal(logged in) 
                 ui->textBrowser->append("\n"+dataList.at(t));
             }
         }
+        socket->abort();
     }
     else
     {
         QMessageBox::information(this,"Error","Cannot connect to the server.");
     }
+    //socket->connectToHost(host,port);
     while(socket->state() == QAbstractSocket::ConnectedState)
     {
+        qDebug()<<"Listening";
         if(socket->waitForReadyRead(1500))
         {
+
             QString data = socket->readAll();
             QStringList dataList = data.split(',');
             for(int t = 0; t < dataList.size(); t++)

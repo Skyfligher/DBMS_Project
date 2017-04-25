@@ -52,7 +52,9 @@ int main(int argc, char *argv[])
         if(connect.server->waitForNewConnection(1000))      //Waiting for connection
         {
             QStringList data = connect.handle();        //.handle() interprets and parses the data, gives it back as a QStringList
-            currentPeer = connect.socket->peerAddress().toString();
+            QString temp1 = connect.socket->peerAddress().toString();
+            QStringList temps = temp1.split("::ffff:");
+            currentPeer = temps.value(1);
             if(data.at(0) != "")                        //If there was an issue, no data, skips to debug output
             {
                 int command = data.at(0).toInt();       //Checks what command is issued, the .at(0), will be an integer
@@ -67,7 +69,9 @@ int main(int argc, char *argv[])
                 }
                 case 2:             //Login command
                 {
-                    currentUsers<<connect.socket->peerAddress().toString();
+                    QString temp1 = connect.socket->peerAddress().toString();
+                    QStringList temps = temp1.split("::ffff:");
+                    currentUsers<<temps.value(1);
                     userId = login(data.at(1),data.at(2));      //Passes email and password to the login function, login function passes back user id or issues that are taken care of by the client
                     connect.socket->write(userId.toUtf8());     //Writing data to the socket .toUtf8 changes QString to byte array
                     connect.socket->waitForBytesWritten(10);    //Waiting for data to be written
@@ -110,7 +114,9 @@ int main(int argc, char *argv[])
                 case 5:
                 {
                     qDebug()<<"five hit";
-                    currentPeer = connect.socket->peerAddress().toString();
+                    QString temp2 = connect.socket->peerAddress().toString();
+                    QStringList temps = temp2.split("::ffff:");
+                    currentPeer = temps.value(1);
                     QDateTime temp = temp.currentDateTime();
                     QString table = "person"+data.at(1);
                     QString time = temp.toString("dd.MM.yyyy HH:mm:ss");
@@ -124,6 +130,7 @@ int main(int argc, char *argv[])
                     if(query.exec())
                     {
                         qDebug()<<"query";
+                        connect.socket->abort();
                         query.exec("SELECT users.nickname FROM main.users WHERE users.id = '"+data.at(1)+"';");
                         query.next();
                         QString tempMessage = "<"+query.value(0).toString()+" "+temp.toString("dd.MM.yyyy HH:mm:ss")+"> "+data.at(2);
