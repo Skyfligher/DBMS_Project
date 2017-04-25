@@ -156,8 +156,64 @@ int main(int argc, char *argv[])
                     }
                     break;
                 }
+                case 6:
+                {
+                    query.prepare("SELECT users.id FROM main.users WHERE users.nickname = '"+data.at(1)+"';");
+                    if(query.exec())
+                    {
+                        query.next();
+                        QString uid = query.value(0).toString();
+                        query.prepare("SELECT * FROM main.person"+uid+";");
+                        if(query.exec())
+                        {
+                            int messages = query.size();
 
-
+                            for(int t = 1; t <= messages; t++)
+                            {
+                                query.next();
+                                chat.append("<"+query.value(0).toString()+" "+query.value(1).toString()+"> "+query.value(2).toString()+",");
+                            }
+                            connect.socket->write(chat.toUtf8());
+                            connect.socket->waitForBytesWritten(100);
+                            connect.socket->abort();
+                            query.clear();
+                            break;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+                case 7:
+                {
+                    query.prepare("SELECT * FROM main.channel;");
+                    if(query.exec())
+                    {
+                        int messages = query.size();
+                        QString currentmsgs = data.value(1);
+                        messages = messages - currentmsgs.toInt();
+                        query.prepare("select * from main.channel order by timedate desc limit "+QString::number(messages)+";");
+                        if(query.exec())
+                        {
+                            int querysize = query.size();
+                        for(int t = 1; t <= querysize; t++)
+                        {
+                            query.next();
+                            chat.append("<"+query.value(0).toString()+" "+query.value(1).toString()+"> "+query.value(2).toString()+",");
+                        }
+                        connect.socket->write(chat.toUtf8());
+                        connect.socket->waitForBytesWritten(100);
+                        connect.socket->abort();
+                        query.clear();
+                        break;
+                        }
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
                 }
 
             }
