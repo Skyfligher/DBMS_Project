@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>658</width>
-    <height>453</height>
+    <width>661</width>
+    <height>457</height>
    </rect>
   </property>
   <property name="palette">
@@ -475,7 +475,7 @@ QLineEdit{
           <x>0</x>
           <y>0</y>
           <width>147</width>
-          <height>393</height>
+          <height>386</height>
          </rect>
         </property>
        </widget>

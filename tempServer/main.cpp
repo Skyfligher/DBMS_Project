@@ -16,6 +16,7 @@ QSqlDatabase database = QSqlDatabase::addDatabase("QMYSQL");    //adding databas
 
 int port;
 bool test;
+QString currentPeer;
 QString data;
 QString chat;
 QStringList currentUsers;
@@ -51,6 +52,7 @@ int main(int argc, char *argv[])
         if(connect.server->waitForNewConnection(1000))      //Waiting for connection
         {
             QStringList data = connect.handle();        //.handle() interprets and parses the data, gives it back as a QStringList
+            currentPeer = connect.socket->peerAddress().toString();
             if(data.at(0) != "")                        //If there was an issue, no data, skips to debug output
             {
                 int command = data.at(0).toInt();       //Checks what command is issued, the .at(0), will be an integer
@@ -65,22 +67,12 @@ int main(int argc, char *argv[])
                 }
                 case 2:             //Login command
                 {
+                    currentUsers<<connect.socket->peerAddress().toString();
                     userId = login(data.at(1),data.at(2));      //Passes email and password to the login function, login function passes back user id or issues that are taken care of by the client
                     connect.socket->write(userId.toUtf8());     //Writing data to the socket .toUtf8 changes QString to byte array
                     connect.socket->waitForBytesWritten(10);    //Waiting for data to be written
-
-                    connect.socket->waitForReadyRead(1000);
-                    if(connect.socket->readAll() == "1")
-                    {
-                        currentUsers<<connect.socket->peerAddress().toString();
-                        break;
-                    }
-
-                    else
-                    {
-                        connect.socket->abort();
-                        break;
-                    }
+                    connect.socket->abort();
+                    break;
                 }
                 case 3:             //Create Account
                 {
@@ -93,7 +85,7 @@ int main(int argc, char *argv[])
                 }
                 case 4:
                 {
-                    query.prepare("SELECT username,timedate,message FROM main.channel;");
+                    query.prepare("SELECT userid,timedate,message FROM main.channel;");
                     if(query.exec())
                     {
                         int messages = query.size();
@@ -106,6 +98,7 @@ int main(int argc, char *argv[])
                         connect.socket->write(chat.toUtf8());
                         connect.socket->waitForBytesWritten(100);
                         connect.socket->abort();
+                        query.clear();
                         break;
                     }
                     else
@@ -114,6 +107,49 @@ int main(int argc, char *argv[])
                     }
 
                 }
+                case 5:
+                {
+                    qDebug()<<"five hit";
+                    currentPeer = connect.socket->peerAddress().toString();
+                    QDateTime temp = temp.currentDateTime();
+                    QString table = "person"+data.at(1);
+                    QString time = temp.toString("dd.MM.yyyy HH:mm:ss");
+                    query.prepare("INSERT INTO main."+table+" (idchan, timedate, message) VALUES (?,?,?); INSERT INTO main.channel (userid, timedate, message) VALUES ('"+data.at(1)+"','"+time+"','"+data.at(2)+"');");
+
+                    query.addBindValue("channel");
+                    query.addBindValue(temp.toString("dd.MM.yyyy HH:mm:ss"));
+                    query.addBindValue(data.at(2));
+
+
+                    if(query.exec())
+                    {
+                        qDebug()<<"query";
+                        query.exec("SELECT users.nickname FROM main.users WHERE users.id = '"+data.at(1)+"';");
+                        query.next();
+                        QString tempMessage = "<"+query.value(0).toString()+" "+temp.toString("dd.MM.yyyy HH:mm:ss")+"> "+data.at(2);
+                        qDebug()<<tempMessage;
+                        qDebug()<<currentUsers.size();
+                        for(int t = 0; t < currentUsers.size(); t++)
+                        {                                qDebug()<<currentUsers.at(t)<<currentPeer;
+                            qDebug()<<"testing";
+
+                            if(currentUsers.at(t) != currentPeer)
+                            {
+                                qDebug()<<currentUsers.at(t)<<currentPeer;
+                            connect.socket->connectToHost(currentUsers.at(t),port);
+                            if(connect.socket->state() == QAbstractSocket::ConnectedState)
+                            {
+                                connect.socket->write(tempMessage.toUtf8());
+                                connect.socket->waitForBytesWritten(100);
+                                connect.socket->abort();
+                               // break;
+                            }
+                            }
+                        }
+                    }
+                    break;
+                }
+
 
                 }
 
@@ -187,8 +223,8 @@ int addUser(QString nickname, QString email, QString firstname, QString lastname
     QString temp = joindate.currentDate().toString("dd.MM.yyyy");   //Changes joindate to new form for the database
     query.prepare("INSERT INTO main.users (id, nickname, email, first, last, "                              //Two querys being prepared in one statement
                   "password, joindate) VALUES (?,?,?,?,?,?,?); CREATE TABLE "                               //First is adding the users row into the users table
-                  +tablename+" (idchan VARCHAR(45), datetime VARCHAR(45), message "                         //The second is creating the users message table
-                             "LONGTEXT, CONSTRAINT PK_"+tablename+" PRIMARY KEY (idchan, datetime))");      //No Bind value is used for the table name, just concatinated
+                  +tablename+" (idchan VARCHAR(45), timedate VARCHAR(45), message "                         //The second is creating the users message table
+                             "LONGTEXT, CONSTRAINT PK_"+tablename+" PRIMARY KEY (idchan, timedate))");      //No Bind value is used for the table name, just concatinated
 
     query.addBindValue(maxuser);        //The bind values in the query are denoted by a ?
     query.addBindValue(nickname);       //each value is added sequencially

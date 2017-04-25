@@ -4,6 +4,7 @@
 #include <QMouseEvent>
 #include <QMessageBox>
 #include <QTcpSocket>
+#include <QDate>
 
 /* Things to do
  * Change parser to something other than a comma no :or;
@@ -60,20 +61,22 @@ void MainWindow::showLog(QString temphost, int tempport)    //Takes info from si
     log.show();                                         //Opens the loging window
 }
 
-void MainWindow::showMain(int userId)   //Takes info from signal(logged in) and sets the userid
+void MainWindow::showMain(int userIdtemp)   //Takes info from signal(logged in) and sets the userid
 {
     this->show();
-    QString user = QString::number(userId); //Sets user id string
+    useId = userIdtemp;                     //Sets user id
+
     socket = new QTcpSocket();
     socket->connectToHost(host,port);
     if(socket->waitForConnected(1500))
     {
-        socket->write("4,");
+        socket->write("4");
         socket->waitForBytesWritten(100);
 
         if(socket->waitForReadyRead(1500))
         {
-            QStringList dataList = socket->readAll().split(',');
+            QString data = socket->readAll();
+            QStringList dataList = data.split(',');
             for(int t = 0; t < dataList.size(); t++)
             {
                 chat<<dataList.at(t);
@@ -89,11 +92,12 @@ void MainWindow::showMain(int userId)   //Takes info from signal(logged in) and 
     {
         if(socket->waitForReadyRead(1500))
         {
-            QStringList data = socket->readAll().split(',');
-            for(int t = 0; t < data.size(); t++)
+            QString data = socket->readAll();
+            QStringList dataList = data.split(',');
+            for(int t = 0; t < dataList.size(); t++)
             {
-                chat<<data.at(t);
-                ui->textBrowser->append("\n"+data.at(t));
+                chat<<dataList.at(t);
+                ui->textBrowser->append("\n"+dataList.at(t));
             }
         }
     }
@@ -118,3 +122,21 @@ void MainWindow::mainClosed()   //Exits the program when triggered by signal(mai
 }
 
 
+
+void MainWindow::on_lineEdit_returnPressed()
+{
+    socket = new QTcpSocket();
+    socket->connectToHost(host,port);
+    if(socket->waitForConnected(1500))
+    {
+        QString tempMessage = "5,"+ QString::number(useId) +","+ui->lineEdit->text();
+        if(socket->write(tempMessage.toUtf8()))
+        {
+            socket->waitForBytesWritten(150);
+            QDateTime temp = temp.currentDateTime();
+            chat<< "<ME "+temp.toString("dd.MM.yyyy HH:mm:ss")+"> "+ui->lineEdit->text();
+            ui->textBrowser->append("\n<ME "+temp.toString("dd.MM.yyyy HH:mm:ss")+"> "+ui->lineEdit->text());
+            socket->abort();
+        }
+    }
+}
