@@ -69,6 +69,7 @@ int main(int argc, char *argv[])
                 }
                 case 2:             //Login command
                 {
+                    qDebug()<<"2 Pressed";
                     QString temp1 = connect.socket->peerAddress().toString();
                     QStringList temps = temp1.split("::ffff:");
                     currentUsers<<temps.value(1);
@@ -89,6 +90,7 @@ int main(int argc, char *argv[])
                 }
                 case 4:
                 {
+                    qDebug()<<"4 pressed";
                     query.prepare("SELECT userid,timedate,message FROM main.channel;");
                     if(query.exec())
                     {
@@ -103,6 +105,7 @@ int main(int argc, char *argv[])
                         connect.socket->waitForBytesWritten(100);
                         connect.socket->abort();
                         query.clear();
+                        qDebug()<<"sent";
                         break;
                     }
                     else
@@ -126,7 +129,8 @@ int main(int argc, char *argv[])
                     query.addBindValue(temp.toString("dd.MM.yyyy HH:mm:ss"));
                     query.addBindValue(data.at(2));
 
-
+                    query.exec();
+                    /*
                     if(query.exec())
                     {
                         qDebug()<<"query";
@@ -136,8 +140,8 @@ int main(int argc, char *argv[])
                         QString tempMessage = "<"+query.value(0).toString()+" "+temp.toString("dd.MM.yyyy HH:mm:ss")+"> "+data.at(2);
                         qDebug()<<tempMessage;
                         qDebug()<<currentUsers.size();
-                        for(int t = 0; t < currentUsers.size(); t++)
-                        {                                qDebug()<<currentUsers.at(t)<<currentPeer;
+                       for(int t = 0; t < currentUsers.size(); t++)
+                        {   qDebug()<<currentUsers.at(t)<<currentPeer;
                             qDebug()<<"testing";
 
                             if(currentUsers.at(t) != currentPeer)
@@ -153,7 +157,8 @@ int main(int argc, char *argv[])
                             }
                             }
                         }
-                    }
+                    }*/
+                    connect.socket->abort();
                     break;
                 }
                 case 6:
@@ -187,6 +192,7 @@ int main(int argc, char *argv[])
                 }
                 case 7:
                 {
+                    qDebug()<<"7 was taken";
                     query.prepare("SELECT * FROM main.channel;");
                     if(query.exec())
                     {

@@ -442,61 +442,17 @@ QLineEdit{
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>11</x>
+      <x>9</x>
       <y>11</y>
-      <width>151</width>
-      <height>421</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_2">
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="font">
-        <font>
-         <pointsize>16</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Channels</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QScrollArea" name="scrollArea">
-       <property name="widgetResizable">
-        <bool>true</bool>
-       </property>
-       <widget class="QWidget" name="scrollAreaWidgetContents">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>147</width>
-          <height>386</height>
-         </rect>
-        </property>
-       </widget>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>169</x>
-      <y>11</y>
-      <width>481</width>
-      <height>421</height>
+      <width>641</width>
+      <height>441</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
      <item row="0" column="0">
       <widget class="QPushButton" name="Disconnect_Button">
        <property name="text">
-        <string>Search User</string>
+        <string>Search User Info</string>
        </property>
       </widget>
      </item>
@@ -510,7 +466,7 @@ QLineEdit{
      <item row="0" column="1">
       <widget class="QPushButton" name="UserSrch_Button">
        <property name="text">
-        <string>Disconnect</string>
+        <string>Clear Message History</string>
        </property>
       </widget>
      </item>
@@ -527,7 +483,6 @@ QLineEdit{
     </layout>
    </widget>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

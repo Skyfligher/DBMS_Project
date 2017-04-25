@@ -6,18 +6,10 @@
 #include <QTcpSocket>
 #include <QDate>
 #include <QThread>
+#include <QFuture>
+#include <QCoreApplication>
+#include <QtConcurrent/QtConcurrent>
 
-/* Things to do
- * Change parser to something other than a comma no :or;
- * Add the Channels and Channel Id tables
- *      channelid(time, message, sender) the ID in channelid should be the channels given id (channel1,channel35,exd
- * Function to create linked list of messages, it should create new items in the List Widget(need to learn how to add them)
- * Function to get data from the server and put it into the linked list (need ability to apend to the top of the list and add to list widget)
- *      once the widget is scrolled to top must load older messages.
- * Need server function to search for the requested messages based on time.
- * Need server function to update all connected clients when a message is sent. Connected users should be kept in an array on both the client and server.
- *
-*/
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -66,6 +58,8 @@ void MainWindow::showMain(int userIdtemp)   //Takes info from signal(logged in) 
 {
     this->show();
     useId = userIdtemp;                     //Sets user id
+    
+    //thread()->sleep(3);
 
     socket = new QTcpSocket();
     socket->connectToHost(host,port);
@@ -73,7 +67,7 @@ void MainWindow::showMain(int userIdtemp)   //Takes info from signal(logged in) 
     {
         socket->write("4");
         socket->waitForBytesWritten(100);
-
+        
         if(socket->waitForReadyRead(1500))
         {
             QString data = socket->readAll();
@@ -90,15 +84,42 @@ void MainWindow::showMain(int userIdtemp)   //Takes info from signal(logged in) 
     {
         QMessageBox::information(this,"Error","Cannot connect to the server.");
     }
+    QFuture<void> future = QtConcurrent::run(this,&MainWindow::updater);
+    
 
-    for(int t = 1; t < 2; t--)
+
+    
+    //socket->connectToHost(host,port);
+    /*while(socket->state() == QAbstractSocket::ConnectedState)
     {
-        thread()->sleep(2);
+        qDebug()<<"Listening";
+        if(socket->waitForReadyRead(1500))
+        {
+        
+            QString data = socket->readAll();
+            QStringList dataList = data.split(',');
+            for(int t = 0; t < dataList.size(); t++)
+            {
+                chat<<dataList.at(t);
+                ui->textBrowser->append("\n"+dataList.at(t));
+            }
+        }
+    }*/
+}
+
+void MainWindow::updater()
+{
+    for(int t = 1000; t > 1; t--)
+    {
+        //ui->textBrowser->append("\n It's working!!!");
+        thread()->sleep(3);
         socket = new QTcpSocket();
         socket->connectToHost(host,port);
         if(socket->waitForConnected(1500))
         {
-            socket->write("7,"+chat.size());
+
+            QString tempmsg = "7,"+QString::number(chat.size());
+            socket->write(tempmsg.toUtf8());
             socket->waitForBytesWritten(100);
 
             if(socket->waitForReadyRead(1500))
@@ -109,35 +130,12 @@ void MainWindow::showMain(int userIdtemp)   //Takes info from signal(logged in) 
                 {
                     chat<<datalist.at(t);
                     ui->textBrowser->append("\n"+datalist.at(t));
+
                 }
             }
         }
         socket->abort();
     }
-
-
-
-
-
-
-
-
-    //socket->connectToHost(host,port);
-    /*while(socket->state() == QAbstractSocket::ConnectedState)
-    {
-        qDebug()<<"Listening";
-        if(socket->waitForReadyRead(1500))
-        {
-
-            QString data = socket->readAll();
-            QStringList dataList = data.split(',');
-            for(int t = 0; t < dataList.size(); t++)
-            {
-                chat<<dataList.at(t);
-                ui->textBrowser->append("\n"+dataList.at(t));
-            }
-        }
-    }*/
 }
 
 void MainWindow::createAcc()    //Triggered by signal(create account button) and sets the windows host info and then shows the window
@@ -176,4 +174,5 @@ void MainWindow::on_lineEdit_returnPressed()
             socket->abort();
         }
     }
+    ui->lineEdit->clear();
 }

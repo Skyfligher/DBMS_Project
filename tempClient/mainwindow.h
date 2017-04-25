@@ -6,6 +6,8 @@
 #include <login.h>
 #include <accountcreate.h>
 #include <channelcreate.h>
+#include <thread>
+#include <QFuture>
 
 
 namespace Ui {
@@ -25,6 +27,7 @@ public:
 
 private:
     Ui::MainWindow *ui;                                 //Setting up the Ui::MainWindow
+    void updater();
     void mousePressEvent(QMouseEvent *event);           //For window click and drag
     void mouseMoveEvent(QMouseEvent *event);            //
     int m_nMouseClick_X_Coordinate;                     //
