@@ -21,6 +21,7 @@ QString data;
 QString chat;
 QStringList currentUsers;
 QSqlQuery query;
+QString lastAdded;
 //QRegExp parse("[:;:]");   will be used in the future, currently parsing with commas, not feasable in future. Cannot have commas in messages right now
 
 QString login(QString userMail, QString password);
@@ -123,13 +124,15 @@ int main(int argc, char *argv[])
                 case 5:
                 {
                     qDebug()<<"five hit";
-                    QString temp2 = connect.socket->peerAddress().toString();
-                    QStringList temps = temp2.split("::ffff:");
-                    currentPeer = temps.value(1);
+                    //QString temp2 = connect.socket->peerAddress().toString();
+                    // QStringList temps = temp2.split("::ffff:");
+                    //currentPeer = temps.value(1);
+                    query.clear();
                     QDateTime temp = temp.currentDateTime();
                     QString table = "person"+data.at(1);
                     QString time = temp.toString("dd.MM.yyyy HH:mm:ss");
-                    query.prepare("INSERT INTO main."+table+" (idchan, timedate, message) VALUES (?,?,?); INSERT INTO main.channel (userid, timedate, message) VALUES ('"+data.at(1)+"','"+time+"','"+data.at(2)+"');");
+                    query.prepare("INSERT INTO main."+table+" (idchan, timedate, message) VALUES (?,?,?); "
+                                  "INSERT INTO main.channel (userid, timedate, message) VALUES ('"+data.at(1)+"','"+time+"','"+data.at(2)+"');");
                     qDebug()<<data.at(2);
                     qDebug()<<query.lastError();
                     query.addBindValue("channel");
