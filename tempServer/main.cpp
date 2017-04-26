@@ -70,13 +70,14 @@ int main(int argc, char *argv[])
                 case 2:             //Login command
                 {
                     qDebug()<<"2 Pressed";
-                    QString temp1 = connect.socket->peerAddress().toString();
-                    QStringList temps = temp1.split("::ffff:");
-                    currentUsers<<temps.value(1);
+                    //QString temp1 = connect.socket->peerAddress().toString();
+                    //QStringList temps = temp1.split("::ffff:");
+                    //currentUsers<<temps.value(1);
                     userId = login(data.at(1),data.at(2));      //Passes email and password to the login function, login function passes back user id or issues that are taken care of by the client
                     connect.socket->write(userId.toUtf8());     //Writing data to the socket .toUtf8 changes QString to byte array
                     connect.socket->waitForBytesWritten(10);    //Waiting for data to be written
                     connect.socket->abort();
+                    query.clear();
                     break;
                 }
                 case 3:             //Create Account
@@ -91,15 +92,20 @@ int main(int argc, char *argv[])
                 case 4:
                 {
                     qDebug()<<"4 pressed";
+                    query.clear();
                     query.prepare("SELECT userid,timedate,message FROM main.channel;");
                     if(query.exec())
                     {
-                        int messages = query.size();
+                        int messages = 0;
+                        //query.next();
+                        messages = query.size();
 
-                        for(int t = 1; t <= messages; t++)
+                        for(int t = 0; t < messages; t++)
                         {
-                            query.next();
+                            if(query.next())
+                            {
                             chat.append("<"+query.value(0).toString()+" "+query.value(1).toString()+"> "+query.value(2).toString()+",");
+                            }
                         }
                         connect.socket->write(chat.toUtf8());
                         connect.socket->waitForBytesWritten(100);
@@ -124,12 +130,15 @@ int main(int argc, char *argv[])
                     QString table = "person"+data.at(1);
                     QString time = temp.toString("dd.MM.yyyy HH:mm:ss");
                     query.prepare("INSERT INTO main."+table+" (idchan, timedate, message) VALUES (?,?,?); INSERT INTO main.channel (userid, timedate, message) VALUES ('"+data.at(1)+"','"+time+"','"+data.at(2)+"');");
-
+                    qDebug()<<data.at(2);
+                    qDebug()<<query.lastError();
                     query.addBindValue("channel");
                     query.addBindValue(temp.toString("dd.MM.yyyy HH:mm:ss"));
                     query.addBindValue(data.at(2));
 
                     query.exec();
+                    qDebug()<<query.lastError();
+
                     /*
                     if(query.exec())
                     {
@@ -193,30 +202,36 @@ int main(int argc, char *argv[])
                 case 7:
                 {
                     qDebug()<<"7 was taken";
-                    query.prepare("SELECT * FROM main.channel;");
+                    query.prepare("SELECT timedate FROM main.channel;");
                     if(query.exec())
                     {
+                        qDebug()<<"selected all "<<query.lastError();
                         int messages = query.size();
                         QString currentmsgs = data.value(1);
-                        messages = messages - currentmsgs.toInt();
+                        qDebug()<<messages<< currentmsgs;
+                        messages = messages - currentmsgs.toInt()+1;
+                        qDebug()<<messages;
                         query.prepare("select * from main.channel order by timedate desc limit "+QString::number(messages)+";");
                         if(query.exec())
                         {
-                            int querysize = query.size();
-                        for(int t = 1; t <= querysize; t++)
-                        {
                             query.next();
-                            chat.append("<"+query.value(0).toString()+" "+query.value(1).toString()+"> "+query.value(2).toString()+",");
+                            QString temp3;
+                            for(int t = 0; t < messages; t++)
+                            {
+                                temp3.append("<"+query.value(t).toString()+" "+query.value(t).toString()+"> "+query.value(t).toString()+",");
+                                connect.socket->write(temp3.toUtf8());
+                                connect.socket->waitForBytesWritten(100);
+                            }
+                            connect.socket->abort();
+                            query.clear();
+                            currentmsgs = " ";
+                            break;
                         }
-                        connect.socket->write(chat.toUtf8());
-                        connect.socket->waitForBytesWritten(100);
-                        connect.socket->abort();
-                        query.clear();
-                        break;
-                        }
+
                     }
                     else
                     {
+                        query.clear();
                         break;
                     }
                 }
