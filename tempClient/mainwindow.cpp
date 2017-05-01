@@ -184,7 +184,7 @@ void MainWindow::on_UserSrch_Button_clicked()
 
 void MainWindow::on_Disconnect_Button_clicked()
 {
-    socket = new QTcpSocket();
+   /* socket = new QTcpSocket();
     socket->connectToHost(host,port);
     if(socket->waitForBytesWritten(1500)){
         QString tempMessage = "8,"+useId;
@@ -204,7 +204,8 @@ void MainWindow::on_Disconnect_Button_clicked()
                 chat<<dataList.at(t);
                 ui->textBrowser->append("\n"+dataList.at(t));
             }
-        }
+        }*/
+        ui->textBrowser->clear();
         socket->abort();
     }
 }
