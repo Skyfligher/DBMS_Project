@@ -452,7 +452,7 @@ QLineEdit{
      <item row="0" column="0">
       <widget class="QPushButton" name="Disconnect_Button">
        <property name="text">
-        <string>Search User Info</string>
+        <string>Clear User History</string>
        </property>
       </widget>
      </item>

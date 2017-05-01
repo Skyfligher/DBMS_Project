@@ -238,6 +238,13 @@ int main(int argc, char *argv[])
                         break;
                     }
                 }
+                case 8:
+                {
+                    QString user = data.at(1);
+                    query.prepare("DELETE FROM main.channel WHERE user = "+user+";");
+                    query.exec();
+                    break;
+                }
                 }
 
             }

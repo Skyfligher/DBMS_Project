@@ -165,14 +165,46 @@ void MainWindow::on_lineEdit_returnPressed()
     if(socket->waitForConnected(1500))
     {
         QString tempMessage = "5,"+ QString::number(useId) +","+ui->lineEdit->text();
-        if(socket->write(tempMessage.toUtf8()))
-        {
-            socket->waitForBytesWritten(150);
+       // if(socket->write(tempMessage.toUtf8()))
+        //{
+          //  socket->waitForBytesWritten(150);
             QDateTime temp = temp.currentDateTime();
             chat<< "<ME "+temp.toString("dd.MM.yyyy HH:mm:ss")+"> "+ui->lineEdit->text();
             ui->textBrowser->append("\n<ME "+temp.toString("dd.MM.yyyy HH:mm:ss")+"> "+ui->lineEdit->text());
             socket->abort();
-        }
+        //}
     }
     ui->lineEdit->clear();
+}
+
+void MainWindow::on_UserSrch_Button_clicked()
+{
+    ui->textBrowser->clear();
+}
+
+void MainWindow::on_Disconnect_Button_clicked()
+{
+    socket = new QTcpSocket();
+    socket->connectToHost(host,port);
+    if(socket->waitForBytesWritten(1500)){
+        QString tempMessage = "8,"+useId;
+        socket->write(tempMessage.toUtf8());
+        socket->waitForBytesWritten(1500);
+        ui->textBrowser->clear();
+
+        socket->write("4");
+        socket->waitForBytesWritten(100);
+
+        if(socket->waitForReadyRead(1500))
+        {
+            QString data = socket->readAll();
+            QStringList dataList = data.split(',');
+            for(int t = 0; t < dataList.size(); t++)
+            {
+                chat<<dataList.at(t);
+                ui->textBrowser->append("\n"+dataList.at(t));
+            }
+        }
+        socket->abort();
+    }
 }
